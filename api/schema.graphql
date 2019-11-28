@@ -1,0 +1,22 @@
+type User {
+    id: String!
+    firstName: String!
+    lastName: String!
+}
+
+type Mutation {
+    createUser(
+        firstName: String!
+        lastName: String!
+    ): User
+
+    # Will return null if the user does not exist.
+    deleteUser(id: String!): User
+
+    # Warning: deletes all users!
+    deleteUsers: Boolean!
+}
+
+type Query {
+    users: [User!]!
+}

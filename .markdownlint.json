@@ -1,0 +1,63 @@
+{
+    "blanks-around-fences": true,
+    "blanks-around-headers": true,
+    "blanks-around-lists": true,
+    "code-block-style": {
+        "style": "fenced"
+    },
+    "commands-show-output": true,
+    "fenced-code-language": true,
+    "first-line-heading": true,
+    "header-increment": true,
+    "header-start-left": true,
+    "header-style": {
+        "style": "atx"
+    },
+    "hr-style": {
+        "style": "---"
+    },
+    "line-length": {
+        "line_length": 120
+    },
+    "list-indent": true,
+    "list-marker-space": true,
+    "ol-prefix": {
+        "style": "one"
+    },
+    "no-alt-text": true,
+    "no-bare-urls": true,
+    "no-blanks-blockquote": true,
+    "no-duplicate-heading": {
+        "siblings_only": true
+    },
+    "no-emphasis-as-header": true,
+    "no-empty-links": true,
+    "no-hard-tabs": true,
+    "no-inline-html": true,
+    "no-missing-space-atx": true,
+    "no-multiple-blanks": true,
+    "no-multiple-space-atx": true,
+    "no-multiple-space-blockquote": true,
+    "no-reversed-links": true,
+    "no-space-in-code": true,
+    "no-space-in-emphasis": true,
+    "no-space-in-links": true,
+    "no-trailing-punctuation": false,
+    "no-trailing-spaces": true,
+    "proper-names": {
+        "code_blocks": false,
+        "names": [
+            "Avondata"
+        ]
+    },
+    "required-headers": false,
+    "single-trailing-newline": true,
+    "single-title": true,
+    "ul-indent": {
+        "indent": 2
+    },
+    "ul-start-left": true,
+    "ul-style": {
+        "style": "dash"
+    }
+}

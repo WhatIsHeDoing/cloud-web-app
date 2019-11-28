@@ -1,0 +1,28 @@
+{
+  "name": "cloud-web-app-api",
+  "version": "1.0.0",
+  "description": "The API that will power our Cloud Web App.",
+  "main": "src/index.ts",
+  "author": "Darren Hickling",
+  "license": "Unlicense",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint --config ../tslint.json --project .",
+    "start": "ts-node-dev --respawn --transpileOnly src/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "12.12.14",
+    "@types/node-fetch": "2.5.4",
+    "apollo-server": "2.9.12",
+    "graphql": "14.5.8",
+    "mongodb": "3.3.5",
+    "reflect-metadata": "0.1.13",
+    "typeorm": "0.2.20",
+    "typescript": "3.7.2"
+  },
+  "devDependencies": {
+    "ts-node-dev": "1.0.0-pre.44",
+    "tslint": "5.20.1"
+  }
+}

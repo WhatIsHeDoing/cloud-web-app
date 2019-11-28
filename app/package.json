@@ -1,0 +1,9 @@
+{
+  "name": "cloud-web-app-web-app",
+  "version": "1.0.0",
+  "description": "Our Cloud Web App.",
+  "main": "index.tsx",
+  "author": "Darren Hickling",
+  "license": "Unlicense",
+  "private": true
+}

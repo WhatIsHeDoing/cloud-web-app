@@ -1,0 +1,13 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true,
+        "source.fixAll.tslint": true
+    },
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        120
+    ],
+    "files.associations": {
+        ".yarnclean": "ini"
+    }
+}
