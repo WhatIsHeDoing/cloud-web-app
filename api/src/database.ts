@@ -1,5 +1,5 @@
 import { createConnection } from "typeorm";
-import { User } from "./models/user";
+import { User } from "./entities";
 
 export const connectToDatabase = async () => {
     const connection = await createConnection({

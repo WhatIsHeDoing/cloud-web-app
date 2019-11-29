@@ -4,6 +4,23 @@ type User {
     lastName: String!
 }
 
+# All fields are optional, the ID is deliberately omitted.
+input UserPatch {
+    firstName: String
+    lastName: String
+}
+
+enum SubscriptionUpdateType {
+    CREATE
+    UPDATE
+    DELETE
+}
+
+type UserSubscription {
+    updateType: SubscriptionUpdateType!
+    user: User!
+}
+
 type Mutation {
     createUser(
         firstName: String!
@@ -14,9 +31,18 @@ type Mutation {
     deleteUser(id: String!): User
 
     # Warning: deletes all users!
-    deleteUsers: Boolean!
+    deleteUsers: [User!]!
+
+    updateUser(
+        id: String!
+        patch: UserPatch!
+    ): User
 }
 
 type Query {
     users: [User!]!
+}
+
+type Subscription {
+    userUpdated: UserSubscription!
 }

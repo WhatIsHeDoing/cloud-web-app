@@ -1,40 +1,23 @@
-import { getMongoManager } from "typeorm";
-import { User } from "./models/user";
+import { User } from "./entities";
+import { CreateUserOptions, FindUserOptions, UpdateUserOptions } from "./models";
+import { createUser, deleteUser, deleteUsers, findAllUsers, subscribeToUserChanges, updateUser } from "./services/user-service";
 
 export const resolvers = {
     Mutation: {
-        createUser: async (_: any, opts: CreateOptions): Promise<User> => {
-            const manager = getMongoManager();
-            const user = manager.create(User, opts);
-            await manager.save(user);
-            return user;
-        },
+        createUser: async (_: any, opts: CreateUserOptions): Promise<User> => createUser(opts),
 
-        deleteUser: async (_: any, { id }: FindOptions): Promise<User | null> => {
-            const manager = getMongoManager();
-            const user = await manager.findOne(User, id);
+        deleteUser: async (_: any, { id }: FindUserOptions): Promise<User | null> => deleteUser(id),
 
-            if (!user) {
-                return null;
-            }
+        deleteUsers: async (): Promise<User[]> => deleteUsers(),
 
-            const userClone = { ...user };
-            await manager.remove(user);
-            return userClone;
-        },
-
-        deleteUsers: async (): Promise<boolean> => (await getMongoManager().deleteMany(User, {})) && true
+        updateUser: async (_: any, { id, patch }: UpdateUserOptions): Promise<User | null> => updateUser(id, patch)
     },
     Query: {
-        users: (): Promise<User[]> => getMongoManager().find(User)
+        users: (): Promise<User[]> => findAllUsers()
+    },
+    Subscription: {
+        userUpdated: {
+            subscribe: () => subscribeToUserChanges()
+        }
     }
 };
-
-interface CreateOptions {
-    firstName: string;
-    lastName: string;
-}
-
-interface FindOptions {
-    id: string;
-}
