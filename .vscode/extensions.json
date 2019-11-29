@@ -4,6 +4,7 @@
     // List of extensions which should be recommended for users of this workspace.
     "recommendations": [
         "apollographql.vscode-apollo",
+        "ban.spellright",
         "davidanson.vscode-markdownlint",
         "editorconfig.editorconfig",
         "ms-vscode.vscode-typescript-tslint-plugin",

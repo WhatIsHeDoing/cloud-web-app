@@ -9,5 +9,17 @@
     ],
     "files.associations": {
         ".yarnclean": "ini"
-    }
+    },
+    "spellright.documentTypes": [
+        "markdown",
+        "plaintext",
+        "powershell",
+        "typescript"
+    ],
+    "spellright.ignoreFiles": [
+        "**/node_modules"
+    ],
+    "spellright.language": [
+        "en"
+    ]
 }

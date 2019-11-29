@@ -12,6 +12,6 @@ export const connectToDatabase = async () => {
     });
 
     if (!connection.isConnected) {
-        throw new Error("Could not connect to the datbase 😢");
+        throw new Error("Could not connect to the database 😢");
     }
 };

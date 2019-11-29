@@ -17,6 +17,6 @@ server
     .listen()
     .then(async ({ url }) => {
         await connectToDatabase();
-        console.log(`🚀  Server ready at ${url}`);
+        console.log(`🚀 GraphQL ready at ${url}`);
     })
     .catch(console.error);
