@@ -1,16 +1,27 @@
 {
     "defaultSeverity": "error",
     "rules": {
+        "arrow-return-shorthand": true,
         "await-promise": true,
+        "callable-types": true,
+        "curly": true,
         "indent": [
             true,
             "spaces",
             4
         ],
+        "no-angle-bracket-type-assertion": true,
+        "no-boolean-literal-compare": true,
+        "no-consecutive-blank-lines": true,
         "no-floating-promises": true,
+        "no-inferrable-types": true,
+        "no-irregular-whitespace": true,
         "no-trailing-whitespace": true,
+        "no-unused-expression": true,
+        "no-var-keyword": true,
         "object-literal-sort-keys": true,
         "ordered-imports": true,
+        "prefer-const": true,
         "quotemark": [
             true,
             "double",
@@ -22,13 +33,15 @@
             true,
             "always"
         ],
+        "strict-comparisons": true,
         "trailing-comma": [
             true,
             {
                 "multiline": "never",
                 "singleline": "never"
             }
-        ]
+        ],
+        "triple-equals": true
     },
     "rulesDirectory": []
 }

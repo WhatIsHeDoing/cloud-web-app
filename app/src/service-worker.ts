@@ -68,9 +68,11 @@ function registerValidSW(swUrl: string, config?: Config) {
         .then(registration => {
             registration.onupdatefound = () => {
                 const installingWorker = registration.installing;
-                if (installingWorker == null) {
+
+                if (!installingWorker) {
                     return;
                 }
+
                 installingWorker.onstatechange = () => {
                     if (installingWorker.state === "installed") {
                         if (navigator.serviceWorker.controller) {
@@ -101,9 +103,7 @@ function registerValidSW(swUrl: string, config?: Config) {
                 };
             };
         })
-        .catch(error => {
-            console.error("Error during service worker registration:", error);
-        });
+        .catch(error => console.error("Error during service worker registration:", error));
 }
 
 function checkValidServiceWorker(swUrl: string, config?: Config) {
@@ -112,9 +112,10 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
         .then(response => {
             // Ensure service worker exists, and that we really are getting a JS file.
             const contentType = response.headers.get("content-type");
+
             if (
                 response.status === 404 ||
-                (contentType != null && contentType.indexOf("javascript") === -1)
+                (contentType && contentType.indexOf("javascript") === -1)
             ) {
                 // No service worker found. Probably a different app. Reload the page.
                 navigator.serviceWorker.ready
@@ -128,11 +129,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
                 registerValidSW(swUrl, config);
             }
         })
-        .catch(() => {
-            console.log(
-                "No internet connection found. App is running in offline mode."
-            );
-        });
+        .catch(() => console.log("No internet connection found. App is running in offline mode."));
 }
 
 export function unregister() {
