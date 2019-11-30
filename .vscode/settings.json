@@ -14,7 +14,8 @@
         "markdown",
         "plaintext",
         "powershell",
-        "typescript"
+        "typescript",
+        "typescriptreact"
     ],
     "spellright.ignoreFiles": [
         "**/node_modules"

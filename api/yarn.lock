@@ -33,6 +33,11 @@
   resolved "https://registry.yarnpkg.com/@apollographql/graphql-playground-html/-/graphql-playground-html-1.6.24.tgz#3ce939cb127fb8aaa3ffc1e90dff9b8af9f2e3dc"
   integrity sha512-8GqG48m1XqyXh4mIZrtB5xOhUwSsh1WsrrsaZQOEYYql3YN9DEu9OOSg0ILzXHZo/h2Q74777YE4YzlArQzQEQ==
 
+"@attilagyongyosi/path-linter@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@attilagyongyosi/path-linter/-/path-linter-2.0.0.tgz#fc2dcf010396274f46e502b09d6aed6270c404cd"
+  integrity sha512-mxKhrQyO5PGmPcIty5VFV0YO+LvuZmii0hrjUxnBE07lvuqMLDZ77KSYscy5sMZZjQzck9QP2ckIYO94V4UzzQ==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
