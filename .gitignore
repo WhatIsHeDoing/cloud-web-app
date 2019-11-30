@@ -1,6 +1,9 @@
 # Log files.
 *.log
 
+# Code coverage.
+**/coverage
+
 # Compiled output.
 **/dist
 
