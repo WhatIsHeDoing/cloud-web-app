@@ -8,14 +8,17 @@
   "private": true,
   "scripts": {
     "build": "tsc",
+    "ci": "run-s build test:ci",
+    "lint": "run-p lint:paths lint:ts",
     "lint:paths": "path-linter --config ../path-linter-config.json",
     "lint:ts": "tslint --config ../tslint.json --project .",
     "start": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "test": "jest --watch",
-    "test:ci": "jest --ci --color=false"
+    "test:ci": "jest --ci --color=false --runInBand"
   },
   "dependencies": {
     "apollo-server": "2.9.12",
+    "dotenv-defaults": "1.0.2",
     "graphql": "14.5.8",
     "mongodb": "3.3.5",
     "reflect-metadata": "0.1.13",
@@ -28,6 +31,7 @@
     "@types/node": "12.12.14",
     "@types/node-fetch": "2.5.4",
     "jest": "24.9.0",
+    "npm-run-all": "4.1.5",
     "ts-jest": "24.2.0",
     "ts-node-dev": "1.0.0-pre.44",
     "tslint": "5.20.1"

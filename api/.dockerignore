@@ -1,0 +1,5 @@
+# Exclude non-versioned controlled files for local builds.
+.env
+coverage
+dist
+node_modules

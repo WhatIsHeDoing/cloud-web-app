@@ -8,9 +8,11 @@
         120
     ],
     "files.associations": {
+        ".env.defaults": "dotenv",
         ".yarnclean": "ini"
     },
     "spellright.documentTypes": [
+        "dockerfile",
         "markdown",
         "plaintext",
         "powershell",
