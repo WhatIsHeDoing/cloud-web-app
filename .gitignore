@@ -4,6 +4,10 @@
 # Log files.
 *.log
 
+# Terraform installation and state.
+.terraform
+*.tfstate*
+
 # Code coverage.
 **/coverage
 
