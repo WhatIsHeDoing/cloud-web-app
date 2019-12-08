@@ -11,6 +11,10 @@
         ".env.defaults": "dotenv",
         ".yarnclean": "ini"
     },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/yarn.lock": true
+    },
     "spellright.documentTypes": [
         "dockerfile",
         "markdown",

@@ -1,5 +1,11 @@
 import { Symbol, User } from "./entities";
-import { CreateUserOptions, FindUserOptions, PossibleSymbols, SearchSymbolOptions, UpdateUserOptions } from "./models";
+
+import {
+    CreateUserOptions, FindUserOptions, NewsArticle, PossibleSymbols,
+    SearchNewsOptions, SearchSymbolOptions, UpdateUserOptions
+} from "./models";
+
+import { searchNews } from "./services/news-service";
 import { searchSymbol } from "./services/symbol-service";
 import { createUser, deleteUser, deleteUsers, findAllUsers, subscribeToUserChanges, updateUser } from "./services/user-service";
 
@@ -13,9 +19,13 @@ export const resolvers = {
 
         updateUser: async (_: any, { id, patch }: UpdateUserOptions): Promise<User | null> => updateUser(id, patch),
 
-        searchSymbol: async (_: any, { symbol }: SearchSymbolOptions): Promise<Symbol | PossibleSymbols> => searchSymbol(symbol)
+        searchSymbol: async (_: any, { symbol }: SearchSymbolOptions): Promise<Symbol | PossibleSymbols> =>
+            searchSymbol(symbol)
     },
     Query: {
+        searchNews: async (_: any, { keywords, numberOfResults }: SearchNewsOptions): Promise<NewsArticle[]> =>
+            searchNews(keywords, numberOfResults),
+
         users: (): Promise<User[]> => findAllUsers()
     },
     SearchSymbolResult: {

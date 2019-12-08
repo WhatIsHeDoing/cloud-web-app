@@ -10,6 +10,20 @@ input UserPatch {
     lastName: String
 }
 
+type NewsArticle {
+    id: String!
+
+    # Approximate time to read.
+    minutesToRead: Int!
+
+    sectionName: String!
+    summary: String!
+    thumbnailUrl: String!
+    url: String!
+    webPublicationDate: String!
+    webTitle: String!
+}
+
 type Symbol {
     currency: String!
     marketClose: String!
@@ -73,6 +87,12 @@ type Mutation {
 }
 
 type Query {
+    # Defaults to ten business results, ordered by publication date.
+    searchNews(
+        keywords: [String!]!
+        numberOfResults: Int
+    ): [NewsArticle!]!
+
     users: [User!]!
 }
 
