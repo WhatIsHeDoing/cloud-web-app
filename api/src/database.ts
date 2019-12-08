@@ -1,11 +1,11 @@
 import { createConnection } from "typeorm";
-import { User } from "./entities";
+import { Symbol, User } from "./entities";
 require("dotenv-defaults").config();
 
 export const connectToDatabase = async () => {
     const connection = await createConnection({
         database: "test",
-        entities: [User],
+        entities: [Symbol, User],
         host: process.env.DB_HOST || "localhost",
         port: +(process.env.DB_PORT || 27017),
         type: "mongodb",

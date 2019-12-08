@@ -13,6 +13,7 @@
         "no-angle-bracket-type-assertion": true,
         "no-boolean-literal-compare": true,
         "no-consecutive-blank-lines": true,
+        "no-console": true,
         "no-floating-promises": true,
         "no-inferrable-types": true,
         "no-irregular-whitespace": true,

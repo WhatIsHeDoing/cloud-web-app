@@ -21,6 +21,7 @@
     "dotenv-defaults": "1.0.2",
     "graphql": "14.5.8",
     "mongodb": "3.3.5",
+    "node-fetch": "2.6.0",
     "reflect-metadata": "0.1.13",
     "typeorm": "0.2.20",
     "typescript": "3.7.2"

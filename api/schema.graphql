@@ -10,6 +10,35 @@ input UserPatch {
     lastName: String
 }
 
+type Symbol {
+    currency: String!
+    marketClose: String!
+    marketOpen: String!
+    name: String!
+    region: String!
+    symbol: String!
+    timezone: String!
+    type: String!
+}
+
+type PossibleSymbol {
+    currency: String!
+    marketClose: String!
+    marketOpen: String!
+    matchScore: Float!
+    name: String!
+    region: String!
+    symbol: String!
+    timezone: String!
+    type: String!
+}
+
+type PossibleSymbols {
+    symbols: [PossibleSymbol!]!
+}
+
+union SearchSymbolResult = Symbol | PossibleSymbols
+
 enum SubscriptionUpdateType {
     CREATE
     UPDATE
@@ -37,6 +66,10 @@ type Mutation {
         id: String!
         patch: UserPatch!
     ): User
+
+    # Finds details of the symbol, or a list of potential symbols from Alpha Vantage.
+    # Mutates as it will cache an uncached, exact-matching symbol, for faster retrieval next time.
+    searchSymbol(symbol: String!): SearchSymbolResult!
 }
 
 type Query {
