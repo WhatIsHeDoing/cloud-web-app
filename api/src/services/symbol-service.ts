@@ -2,9 +2,10 @@
 
 import fetch from "node-fetch";
 import { getManager } from "typeorm";
-import { adaptSymbol } from "../adapters";
+import { adaptSymbol, adaptSymbolTimeSeries } from "../adapters";
 import { Symbol } from "../entities";
 import { PossibleSymbols, SymbolMatchResults } from "../models";
+import { SymbolTimeSeriesResponse } from "../models/alpha-vantage/time-series";
 
 /** Finds the details of an exact match, or a list of potential matches. */
 export const searchSymbol = async (symbol: string): Promise<Symbol | PossibleSymbols> => {
@@ -22,9 +23,8 @@ export const searchSymbol = async (symbol: string): Promise<Symbol | PossibleSym
     searchParams.append("apikey", process.env.ALPHA_VANTAGE_API_KEY || "demo");
     searchParams.append("function", "SYMBOL_SEARCH");
     searchParams.append("keywords", symbol);
-    const uri = "https://www.alphavantage.co/query?" + searchParams.toString();
 
-    const response = await fetch(uri);
+    const response = await fetch(_baseUrl + searchParams.toString());
 
     if (!response.ok) {
         throw new Error("Could not fetch from the API 😢");
@@ -44,3 +44,22 @@ export const searchSymbol = async (symbol: string): Promise<Symbol | PossibleSym
     // No exact match, so return all possible matches.
     return { symbols: symbols };
 };
+
+export const symbolTimeSeries = async (symbol: string) => {
+    const searchParams = new URLSearchParams();
+    searchParams.append("apikey", process.env.ALPHA_VANTAGE_API_KEY || "demo");
+    searchParams.append("function", "TIME_SERIES_INTRADAY");
+    searchParams.append("interval", "1min");
+    searchParams.append("symbol", symbol);
+
+    const response = await fetch(_baseUrl + searchParams.toString());
+
+    if (!response.ok) {
+        throw new Error("Could not fetch from the API 😢");
+    }
+
+    const data: SymbolTimeSeriesResponse = await response.json();
+    return adaptSymbolTimeSeries(data["Time Series (1min)"]);
+};
+
+const _baseUrl = "https://www.alphavantage.co/query?";

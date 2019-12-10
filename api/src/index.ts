@@ -12,7 +12,7 @@ const server = new ApolloServer({
     typeDefs
 });
 
-// tslint:disable-next-line: no-console
+// tslint:disable: no-console
 server
     .listen()
     .then(async ({ url }) => {

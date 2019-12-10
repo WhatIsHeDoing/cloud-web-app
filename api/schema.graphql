@@ -59,6 +59,15 @@ enum SubscriptionUpdateType {
     DELETE
 }
 
+type SymbolTimeSeries {
+    close: Float!
+    high: Float!
+    low: Float!
+    open: Float!
+    timestamp: String!
+    volume: Int!
+}
+
 type UserSubscription {
     updateType: SubscriptionUpdateType!
     user: User!
@@ -92,6 +101,9 @@ type Query {
         keywords: [String!]!
         numberOfResults: Int
     ): [NewsArticle!]!
+
+    # Time series of a symbol by the minute, ordered by timestamp descending.
+    symbolTimeSeries(symbol: String!): [SymbolTimeSeries!]!
 
     users: [User!]!
 }

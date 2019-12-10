@@ -23,6 +23,7 @@
         "no-floating-promises": true,
         "no-inferrable-types": true,
         "no-irregular-whitespace": true,
+        "no-non-null-assertion": true,
         "no-trailing-whitespace": true,
         "no-unused-expression": true,
         "no-var-keyword": true,
