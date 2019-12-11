@@ -1,5 +1,3 @@
-import { User } from "./entities";
-
 import {
     MutationCreateUserArgs,
     MutationDeleteUserArgs,
@@ -9,7 +7,8 @@ import {
     QuerySearchNewsArgs,
     QuerySymbolTimeSeriesArgs,
     SearchSymbolResult,
-    SymbolTimeSeries
+    SymbolTimeSeries,
+    User
 } from "./generated/graphql";
 
 import { searchNews } from "./services/news-service";
