@@ -1,7 +1,8 @@
-import { Symbol, SymbolResult } from "../models";
+import { PossibleSymbol } from "../generated/graphql";
+import { SymbolResult } from "../models/alpha-vantage/search-symbol";
 
 /** Takes the slightly bizarre output from Alpha Vantage and maps it to a cleaner representation for caching 🧹 */
-export const adaptSymbol = (result: SymbolResult): Symbol => ({
+export const adaptSymbol = (result: SymbolResult): PossibleSymbol => ({
     currency: result["8. currency"],
     marketClose: result["6. marketClose"],
     marketOpen: result["5. marketOpen"],

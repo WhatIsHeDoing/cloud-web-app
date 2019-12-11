@@ -4,7 +4,8 @@ import fetch from "node-fetch";
 import { getManager } from "typeorm";
 import { adaptSymbol, adaptSymbolTimeSeries } from "../adapters";
 import { Symbol } from "../entities";
-import { PossibleSymbols, SymbolMatchResults } from "../models";
+import { PossibleSymbols } from "../generated/graphql";
+import { SymbolMatchResults } from "../models/alpha-vantage/search-symbol";
 import { SymbolTimeSeriesResponse } from "../models/alpha-vantage/time-series";
 
 /** Finds the details of an exact match, or a list of potential matches. */

@@ -1,13 +1,13 @@
 import { PubSub } from "apollo-server";
 import { getMongoManager } from "typeorm";
 import { User } from "../entities";
-import { CreateUserOptions, SubscriptionUpdateType, UserPatch } from "../models";
+import { MutationCreateUserArgs, SubscriptionUpdateType, UserPatch } from "../generated/graphql";
 
-export const createUser = async (opts: CreateUserOptions): Promise<User> => {
+export const createUser = async (opts: MutationCreateUserArgs): Promise<User> => {
     const manager = getMongoManager();
     const user = manager.create(User, opts);
     await manager.save(user);
-    await publishChange("CREATE", user);
+    await publishChange(SubscriptionUpdateType.Create, user);
     return user;
 };
 
@@ -21,7 +21,7 @@ export const deleteUser = async (id: string): Promise<User | null> => {
 
     const userClone = { ...user };
     await manager.remove(user);
-    await publishChange("DELETE", user);
+    await publishChange(SubscriptionUpdateType.Delete, user);
     return userClone;
 };
 
@@ -29,7 +29,7 @@ export const deleteUsers = async (): Promise<User[]> => {
     const manager = getMongoManager();
     const allUsers = await manager.find(User);
     await manager.deleteMany(User, {});
-    await Promise.all(allUsers.map(user => publishChange("DELETE", user)));
+    await Promise.all(allUsers.map(user => publishChange(SubscriptionUpdateType.Delete, user)));
     return allUsers;
 };
 
@@ -47,7 +47,7 @@ export const updateUser = async (id: string, patch: UserPatch): Promise<User | n
 
     Object.assign(user, patch);
     await manager.save(user);
-    await publishChange("UPDATE", user);
+    await publishChange(SubscriptionUpdateType.Update, user);
     return user;
 };
 

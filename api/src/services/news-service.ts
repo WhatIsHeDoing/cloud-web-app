@@ -4,10 +4,14 @@ import { DateTime } from "luxon";
 import fetch from "node-fetch";
 import { adaptNewsSearchResult } from "../adapters";
 import { sortLuxonDateTimes } from "../extensions/luxon-extensions";
-import { NewsArticle, NewsSearchResponse } from "../models";
+import { NewsArticle } from "../generated/graphql";
+import { NewsSearchResponse } from "../models/the-guardian/news-search";
 
 /** Finds the business news stories relating to search terms. */
-export const searchNews = async (keywords: string[], numberOfResults?: number): Promise<NewsArticle[]> => {
+export const searchNews = async (
+    keywords: readonly string[],
+    numberOfResults: number | null
+): Promise<NewsArticle[]> => {
     // Build the search URL.
     const searchParams = new URLSearchParams();
     searchParams.append("api-key", process.env.THE_GUARDIAN_API_KEY || "demo");

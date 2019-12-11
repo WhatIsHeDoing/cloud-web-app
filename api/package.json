@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
+    "codegen": "graphql-codegen --config codegen.yml",
     "ci": "run-s build test:ci",
     "lint": "run-p lint:paths lint:ts",
     "lint:paths": "path-linter --config ../path-linter-config.json",
@@ -29,6 +30,9 @@
   },
   "devDependencies": {
     "@attilagyongyosi/path-linter": "2.0.0",
+    "@graphql-codegen/cli": "1.9.1",
+    "@graphql-codegen/introspection": "1.9.1",
+    "@graphql-codegen/typescript": "1.9.1",
     "@types/jest": "24.0.23",
     "@types/luxon": "1.21.0",
     "@types/node": "12.12.14",

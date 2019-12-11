@@ -51,5 +51,10 @@
         ],
         "triple-equals": true
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "**/graphql.ts"
+        ]
+    }
 }

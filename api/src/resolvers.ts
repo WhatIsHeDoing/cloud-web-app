@@ -1,38 +1,54 @@
-import { Symbol, User } from "./entities";
+import { User } from "./entities";
 
 import {
-    CreateUserOptions, FindUserOptions, NewsArticle, PossibleSymbols, SearchNewsOptions,
-    SearchSymbolOptions, SymbolTimeSeries, SymbolTimeSeriesOptions, UpdateUserOptions
-} from "./models";
+    MutationCreateUserArgs,
+    MutationDeleteUserArgs,
+    MutationSearchSymbolArgs,
+    MutationUpdateUserArgs,
+    NewsArticle,
+    QuerySearchNewsArgs,
+    QuerySymbolTimeSeriesArgs,
+    SearchSymbolResult,
+    SymbolTimeSeries
+} from "./generated/graphql";
 
 import { searchNews } from "./services/news-service";
 import { searchSymbol, symbolTimeSeries } from "./services/symbol-service";
-import { createUser, deleteUser, deleteUsers, findAllUsers, subscribeToUserChanges, updateUser } from "./services/user-service";
+
+import {
+    createUser,
+    deleteUser,
+    deleteUsers,
+    findAllUsers,
+    subscribeToUserChanges,
+    updateUser
+} from "./services/user-service";
 
 export const resolvers = {
     Mutation: {
-        createUser: async (_: any, opts: CreateUserOptions): Promise<User> => createUser(opts),
+        createUser: async (_: any, opts: MutationCreateUserArgs): Promise<User> => createUser(opts),
 
-        deleteUser: async (_: any, { id }: FindUserOptions): Promise<User | null> => deleteUser(id),
+        deleteUser: async (_: any, { id }: MutationDeleteUserArgs): Promise<User | null> => deleteUser(id),
 
         deleteUsers: async (): Promise<User[]> => deleteUsers(),
 
-        updateUser: async (_: any, { id, patch }: UpdateUserOptions): Promise<User | null> => updateUser(id, patch),
+        updateUser: async (_: any, { id, patch }: MutationUpdateUserArgs)
+            : Promise<User | null> => updateUser(id, patch),
 
-        searchSymbol: async (_: any, { symbol }: SearchSymbolOptions): Promise<Symbol | PossibleSymbols> =>
+        searchSymbol: async (_: any, { symbol }: MutationSearchSymbolArgs): Promise<SearchSymbolResult> =>
             searchSymbol(symbol)
     },
     Query: {
-        searchNews: async (_: any, { keywords, numberOfResults }: SearchNewsOptions): Promise<NewsArticle[]> =>
+        searchNews: async (_: any, { keywords, numberOfResults }: QuerySearchNewsArgs): Promise<NewsArticle[]> =>
             searchNews(keywords, numberOfResults),
 
-        symbolTimeSeries: async (_: any, { symbol }: SymbolTimeSeriesOptions): Promise<SymbolTimeSeries[]> =>
+        symbolTimeSeries: async (_: any, { symbol }: QuerySymbolTimeSeriesArgs): Promise<SymbolTimeSeries[]> =>
             symbolTimeSeries(symbol),
 
         users: (): Promise<User[]> => findAllUsers()
     },
     SearchSymbolResult: {
-        __resolveType: (model: Symbol | PossibleSymbols) => "symbol" in model ? "Symbol" : "PossibleSymbols"
+        __resolveType: (model: SearchSymbolResult) => "symbol" in model ? "Symbol" : "PossibleSymbols"
     },
     Subscription: {
         userUpdated: {

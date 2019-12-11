@@ -1,4 +1,5 @@
-import { NewsArticle, NewsSearchResult } from "../models";
+import { NewsArticle } from "../generated/graphql";
+import { NewsSearchResult } from "../models/the-guardian/news-search";
 
 /**
  * Flattens the result of a content search from The Guardian,

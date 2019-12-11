@@ -1,4 +1,4 @@
-import { SymbolTimeSeries } from "../models";
+import { SymbolTimeSeries } from "../generated/graphql";
 import { SymbolTimeSeriesResponseValues } from "../models/alpha-vantage/time-series";
 
 /** Takes the slightly bizarre output from Alpha Vantage and maps it to a cleaner representation 🧹 */

@@ -1,4 +1,4 @@
-import { SymbolResult } from "./symbol-result";
+import { SymbolResult } from ".";
 
 /** @see https://www.alphavantage.co/documentation/#symbolsearch */
 export interface SymbolMatchResults {

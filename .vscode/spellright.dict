@@ -19,3 +19,9 @@ isymbol
 apikey
 typeorm
 luxon
+graphql
+apollo
+api
+apikey
+mongodb
+dotenv
