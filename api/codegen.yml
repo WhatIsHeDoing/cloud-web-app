@@ -8,6 +8,6 @@ generates:
     config:
       avoidOptionals: true
       immutableTypes: true
-  ./graphql.schema.json:
+  src/generated/graphql.schema.json:
     plugins:
       - "introspection"

@@ -1,16 +1,16 @@
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import React from "react";
-import { User } from "./models";
+import { User } from "./generated/graphql";
 
 export const Test: React.FC = () => {
-    const { data, error, loading } = useQuery(USERS);
+    const { data, error, loading } = useQuery<{ users: User[] }>(USERS);
 
     if (loading) {
         return <p>Loading...</p>;
     }
 
-    if (error) {
+    if (error || !data) {
         return <p>Error :(</p>;
     }
 

@@ -25,3 +25,4 @@ api
 apikey
 mongodb
 dotenv
+toastify
